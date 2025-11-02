@@ -9,18 +9,17 @@ const routes: RouteObject[] = [
     element: <App />,
     children: [
       {
-        index: true, // This marks the route as the default child route for the parent path ('/')
+        index: true,
         element: <DashboardPage />,
       },
       {
-        path: 'about', // Note: no leading slash for child routes
+        path: 'about',
         element: (
           <>
             <h1>Welcome About</h1>
           </>
         ),
       },
-      // You can add more routes here
     ],
   },
   {

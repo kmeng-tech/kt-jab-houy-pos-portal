@@ -1,4 +1,4 @@
-import { useAppState } from '../context/CartContext';
+import { useAppState } from '../context/AppContext';
 
 export const Cart = () => {
   const { state } = useAppState();

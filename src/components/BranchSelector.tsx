@@ -1,4 +1,4 @@
-import { useAppState } from '../context/CartContext';
+import { useAppState } from '../context/AppContext';
 import type { Branch } from '../types';
 
 // Let's pretend this data comes from an API

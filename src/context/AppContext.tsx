@@ -2,9 +2,12 @@
 import React, { createContext, useReducer, useContext } from 'react';
 import type { ReactNode } from 'react';
 import type { AppState, Branch, Product } from '../types';
+import { getSubdomain } from '../utils';
+import { AuthService } from '../services';
 
 // Define the shape of actions that can be taken
 type Action =
+  | { type: 'SET_AUTHENTICATION'; payload: null }
   | { type: 'SET_BRANCH'; payload: Branch }
   | { type: 'ADD_TO_CART'; payload: Product };
 
@@ -20,6 +23,9 @@ const AppStateContext = createContext<
 // The reducer function handles state changes
 const appReducer = (state: AppState, action: Action): AppState => {
   switch (action.type) {
+    case 'SET_AUTHENTICATION':
+      return { ...state, currentBranch: action.payload };
+
     case 'SET_BRANCH':
       return { ...state, currentBranch: action.payload };
 
@@ -52,7 +58,9 @@ const appReducer = (state: AppState, action: Action): AppState => {
 
 // The provider component that wraps our app
 export const AppStateProvider = ({ children }: { children: ReactNode }) => {
+  const authService = new AuthService().getInstance;
   const initialState: AppState = {
+    currentTenant: await authService.fetchMe(),
     currentBranch: null,
     cart: [],
   };

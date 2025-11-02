@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import { useAppState } from '../context/CartContext';
+import { useAppState } from '../context/AppContext';
 import type { Product } from '../types';
 
 // Mock data for favorite products. In a real app, you'd fetch this.

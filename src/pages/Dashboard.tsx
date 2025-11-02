@@ -1,9 +1,17 @@
 import React from 'react';
+import { ProductSearch } from '../components/ProductSearch';
+import { Cart } from '../components/Cart';
 
 const DashboardPage: React.FC = () => {
   return (
     <>
-      <h1>Welcome Dashboard</h1>
+      <div className="lg:col-span-2">
+        <ProductSearch />
+      </div>
+
+      <div className="lg:col-span-1">
+        <Cart />
+      </div>
     </>
   );
 };
